@@ -1,18 +1,18 @@
 package org.pplm.gadgets.jarvalid;
 
 import java.io.File;
-import java.util.List;
+import java.util.Collection;
 import java.util.stream.Collectors;
 
 import org.apache.commons.io.FileUtils;
 
 public class JarValidater {
 
-	public static List<String> validateJars(String path) {
+	public static Collection<String> validateJars(String path) {
 		return validateJars(new File(path));
 	}
 	
-	public static List<String> validateJars(File path) {
+	public static Collection<String> validateJars(File path) {
 		if (path == null || !path.isDirectory()) {
 			return null;
 		}
@@ -32,12 +32,12 @@ public class JarValidater {
 
 	public static void main(String[] args) {
 		if (args.length < 1) {
-			System.out.println("Usage: java -jar jar-validation.jar <file | path>");
+			System.err.println("Usage: java -jar jar-validation.jar <file | path>");
 			System.exit(1);
 		}
 		File file = new File(args[0]);
 		if (!file.exists()) {
-			System.out.println("file [" + args + "] is not exists");
+			System.err.println("file [" + args + "] is not exists");
 			System.exit(2);
 		}
 		if (file.isFile()) {
