@@ -49,7 +49,9 @@ public class ZipValidater {
 			return false;
 		} finally {
 			try {
-				zipFile.close();
+				if (zipFile != null) {
+					zipFile.close();
+				}
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
