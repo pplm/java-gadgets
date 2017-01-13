@@ -16,7 +16,7 @@ public class JarValidater {
 		if (path == null || !path.isDirectory()) {
 			return null;
 		}
-		return FileUtils.listFiles(path, new String[] { "jar" }, true).stream()
+		return FileUtils.listFiles(path, new String[] { "jar" }, true).stream().parallel()
 				.filter(jarFile -> !validate(jarFile))
 				.map(jarFile -> jarFile.toString())
 				.collect(Collectors.toList());
