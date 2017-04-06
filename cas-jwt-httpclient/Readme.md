@@ -14,6 +14,14 @@
 		Assert.assertEquals(true, httpclient.login());
 		httpclient.close();
 ```
+或者
+```java
+		String casLoginUrl = "https://${CAS_HOST}:${CAS_PORT}/cas/login";
+		String token = "your jwt token";
+		CasJwtHttpClient httpclient = new CasJwtHttpClient();
+		Assert.assertEquals(true, httpclient.login(casLoginUrl, token));
+		httpclient.close();
+```
 
 # Reference
 - [CAS](https://apereo.github.io/cas/5.0.x/index.html)企业级单点登录

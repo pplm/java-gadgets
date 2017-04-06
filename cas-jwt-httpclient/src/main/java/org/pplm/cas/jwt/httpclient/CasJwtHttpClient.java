@@ -62,6 +62,9 @@ public class CasJwtHttpClient implements HttpClient, Closeable {
 	}
 	
 	public boolean login() throws ClientProtocolException, IOException {
+		if (logined) {
+			return logined;
+		}
 		initHttpClient();
 		try {
 			String loginUrl = casLoginUrl + "?" + serviceParamName + "=" + new URLCodec(urlEncoding).encode(casLoginUrl) + "&" + tokenParamName + "=" + token;
@@ -78,6 +81,15 @@ public class CasJwtHttpClient implements HttpClient, Closeable {
 		return logined;
 	}
 	
+	public boolean login(String casLoginUrl, String token) throws ClientProtocolException, IOException {
+		if (logined) {
+			throw new RuntimeException("logined");
+		}
+		this.casLoginUrl = casLoginUrl;
+		this.token = token;
+		return login();
+	}
+	
 	private void initHttpClient() {
 		if (trustStrategy == null) {
 			trustStrategy = (chain, authType) -> true;
@@ -92,7 +104,6 @@ public class CasJwtHttpClient implements HttpClient, Closeable {
 		} catch (KeyManagementException | NoSuchAlgorithmException | KeyStoreException e) {
 			throw new RuntimeException(e);
 		}
-		
 	}
 	
 	@Override
