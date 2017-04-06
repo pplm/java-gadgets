@@ -65,7 +65,7 @@ public class CasJwtHttpClient implements HttpClient, Closeable {
 		if (logined) {
 			return logined;
 		}
-		initHttpClient();
+		initSslHttpClient();
 		try {
 			String loginUrl = casLoginUrl + "?" + serviceParamName + "=" + new URLCodec(urlEncoding).encode(casLoginUrl) + "&" + tokenParamName + "=" + token;
 			HttpGet httpGet = new HttpGet(loginUrl);
@@ -90,7 +90,7 @@ public class CasJwtHttpClient implements HttpClient, Closeable {
 		return login();
 	}
 	
-	private void initHttpClient() {
+	private void initSslHttpClient() {
 		if (trustStrategy == null) {
 			trustStrategy = (chain, authType) -> true;
 		}
