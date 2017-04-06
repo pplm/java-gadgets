@@ -12,6 +12,7 @@
 		String token = "your jwt token";
 		CasJwtHttpClient httpclient = new CasJwtHttpClient(casLoginUrl, token);
 		Assert.assertEquals(true, httpclient.login());
+		httpclient.close();
 ```
 
 # Reference
