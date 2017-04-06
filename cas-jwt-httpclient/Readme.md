@@ -6,7 +6,7 @@
 - 准备好JWT token
 
 ## 使用方法
-使用登陆过的httpclient访问被cas保护的资源即可
+使用CasJwtHttpClient登录cas server
 ```java
 		String casLoginUrl = "https://${CAS_HOST}:${CAS_PORT}/cas/login";
 		String token = "your jwt token";
@@ -22,6 +22,7 @@
 		Assert.assertEquals(true, httpclient.login(casLoginUrl, token));
 		httpclient.close();
 ```
+使用登陆过的CasJwtHttpClient访问被cas保护的资源即可。
 
 # Reference
 - [CAS](https://apereo.github.io/cas/5.0.x/index.html)企业级单点登录
