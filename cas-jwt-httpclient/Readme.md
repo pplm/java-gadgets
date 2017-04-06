@@ -1,5 +1,5 @@
 # CAS JWT Httpclient
-使用java http client访问被CAS保护资源
+利用JWT(Json Web Token)，使用java http client访问被CAS保护资源
 
 ## 前置条件
 - CAS 支持JWT鉴权
