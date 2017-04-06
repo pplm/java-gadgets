@@ -1,5 +1,5 @@
 # CAS JWT Httpclient
-利用JWT(Json Web Token)，使用java http client访问被CAS保护资源
+利用JWT(Json Web Token)，使用java http client访问被[CAS](https://apereo.github.io/cas/5.0.x/index.html)保护资源
 
 ## 前置条件
 - CAS 支持JWT鉴权
@@ -13,3 +13,7 @@
 		CasJwtHttpClient httpclient = new CasJwtHttpClient(casLoginUrl, token);
 		Assert.assertEquals(true, httpclient.login());
 ```
+
+# Reference
+- [CAS](https://apereo.github.io/cas/5.0.x/index.html)企业级单点登录
+- [Apache Http Client](http://hc.apache.org/)
